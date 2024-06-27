@@ -111,9 +111,9 @@ echo "if [ -z "$XDG_RUNTIME_DIR" ]; then \n
 \n
 	mkdir -pm 0700 "$XDG_RUNTIME_DIR" \n
 	export XDG_RUNTIME_DIR \n
-fi" << /home/$ALPUSER/.profile
+fi" >> /home/$ALPUSER/.profile
 
-echo "permit persist :wheel" << /etc/doas.conf
+echo "permit persist :wheel" >> /etc/doas.conf
 
 echo "====================>  Setup complete"
 echo "You can now reboot your machine."
