@@ -71,7 +71,7 @@ apk add alacritty wofi thunar qutebrowser git neovim grim doas
 
 echo "====================> Installing icons and fonts"
 apk add font-nerd-fonts-symbols
-#apk add ttf-dejavu
+apk add ttf-dejavu
 
 echo "====================> deleting packages which have been replaced"
 apk del mdev
