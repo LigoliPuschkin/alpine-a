@@ -106,10 +106,10 @@ rc-update add iwd
 #rc-update add alsa
 
 echo "====================>  chg doas.conf and XDG_RUNTIME"
-echo "if [ -z "$XDG_RUNTIME_DIR" ]; then \n
-	XDG_RUNTIME_DIR="/tmp/$(id -u)-runtime-dir" \n
+echo "if [ -z '$XDG_RUNTIME_DIR' ]; then \n
+	XDG_RUNTIME_DIR='/tmp/$(id -u)-runtime-dir' \n
 \n
-	mkdir -pm 0700 "$XDG_RUNTIME_DIR" \n
+	mkdir -pm 0700 '$XDG_RUNTIME_DIR' \n
 	export XDG_RUNTIME_DIR \n
 fi" >> /home/$ALPUSER/.profile
 
