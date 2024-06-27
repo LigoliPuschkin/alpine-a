@@ -67,7 +67,7 @@ apk add swaylock swaylockd swaybg swayidle
 
 echo "====================> Installing applications"
 # adds apps: Terminal; app launcher; file browser; internet browser; git; texteditor; screenshot tool
-apk add alacritty wofi thunar qutebrowser git neovim grim
+apk add alacritty wofi thunar qutebrowser git neovim grim doas
 
 echo "====================> Installing icons and fonts"
 apk add font-nerd-fonts-symbols
@@ -104,6 +104,16 @@ rc-update add iwd
 #/usr/libexec/pipewire-launcher
 #rc-service alsa start
 #rc-update add alsa
+
+echo "====================>  chg doas.conf and XDG_RUNTIME"
+echo "if [ -z "$XDG_RUNTIME_DIR" ]; then \n
+	XDG_RUNTIME_DIR="/tmp/$(id -u)-runtime-dir" \n
+\n
+	mkdir -pm 0700 "$XDG_RUNTIME_DIR" \n
+	export XDG_RUNTIME_DIR \n
+fi" << /home/$ALPUSER/.profile
+
+echo "permit persist :wheel" << /etc/doas.conf
 
 echo "====================>  Setup complete"
 echo "You can now reboot your machine."
