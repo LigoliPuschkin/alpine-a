@@ -14,6 +14,7 @@ adduser $ALPUSER input
 adduser $ALPUSER video
 adduser $ALPUSER audio
 
+echo "====================> Add Community remos and update system"
 # add comunity packages and update system
 echo "http://dl-cdn.alpinelinux.org/alpine/v3.20/community" >> /etc/apk/repositories
 apk update
@@ -106,12 +107,14 @@ rc-update add iwd
 #rc-update add alsa
 
 echo "====================>  chg doas.conf and XDG_RUNTIME"
-echo "if [ -z '$XDG_RUNTIME_DIR' ]; then \n
-	XDG_RUNTIME_DIR='/tmp/$(id -u)-runtime-dir' \n
-\n
-	mkdir -pm 0700 '$XDG_RUNTIME_DIR' \n
-	export XDG_RUNTIME_DIR \n
-fi" >> /home/$ALPUSER/.profile
+printf 
+	'if [ -z "$XDG_RUNTIME_DIR" ]; then \n
+		XDG_RUNTIME_DIR="/tmp/$(id -u)-runtime-dir" \n
+ 		\n  
+ 		mkdir -pm 0700 "$XDG_RUNTIME_DIR" \n  
+ 		export XDG_RUNTIME_DIR \n
+   	fi\n' 
+ >> /home/$ALPUSER/.profile
 
 echo "permit persist :wheel" >> /etc/doas.conf
 
