@@ -114,7 +114,7 @@ printf
  		mkdir -pm 0700 "$XDG_RUNTIME_DIR" \n  
  		export XDG_RUNTIME_DIR \n
    	fi\n' 
- >> /home/$ALPUSER/.profile
+ > /home/$ALPUSER/.profile
 
 echo "permit persist :wheel" >> /etc/doas.conf
 
