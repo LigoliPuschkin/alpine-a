@@ -110,8 +110,10 @@ rc-update add iwd
 echo "====================>  chg doas.conf and XDG_RUNTIME"
 # no longer needed since we coppy .profile from githup
 #printf 	'if [ -z "$XDG_RUNTIME_DIR" ]; then \n	XDG_RUNTIME_DIR="/tmp/$(id -u)-runtime-dir" \n \n mkdir -pm 0700 "$XDG_RUNTIME_DIR" \n export XDG_RUNTIME_DIR \n fi\n' > /home/$ALPUSER/.profile
-
 echo "permit persist :wheel" >> /etc/doas.conf
-
+echo "====================>  make user owner of his directory; and disale root"
+doas chown -R $ALPUSER /home/$ALPUSER
+#locks root user out cant use root any more?	
+passwd -l root	
 echo "====================>  Setup complete"
 echo "You can now reboot your machine."
