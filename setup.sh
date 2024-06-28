@@ -84,7 +84,7 @@ mkdir /home/$ALPUSER/.config/
 #mkdir /home/$ALPUSER/.profile
 cp -r configs/* /home/$ALPUSER/.config/
 #cp -r mimeapps.list /etc/xdg/
-#cat .profile >> /home/$ALPUSER/.profile
+cat .profile >> /home/$ALPUSER/.profile
 cd /home/$ALPUSER/.config
 git clone https://github.com/LigoliPuschkin/nvim
 
@@ -108,7 +108,8 @@ rc-update add iwd
 #rc-update add alsa
 
 echo "====================>  chg doas.conf and XDG_RUNTIME"
-printf 	'if [ -z "$XDG_RUNTIME_DIR" ]; then \n	XDG_RUNTIME_DIR="/tmp/$(id -u)-runtime-dir" \n \n mkdir -pm 0700 "$XDG_RUNTIME_DIR" \n export XDG_RUNTIME_DIR \n fi\n' > /home/$ALPUSER/.profile
+# no longer needed since we coppy .profile from githup
+#printf 	'if [ -z "$XDG_RUNTIME_DIR" ]; then \n	XDG_RUNTIME_DIR="/tmp/$(id -u)-runtime-dir" \n \n mkdir -pm 0700 "$XDG_RUNTIME_DIR" \n export XDG_RUNTIME_DIR \n fi\n' > /home/$ALPUSER/.profile
 
 echo "permit persist :wheel" >> /etc/doas.conf
 
