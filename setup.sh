@@ -83,7 +83,7 @@ echo "====================> Update main config files"
 mkdir /home/$ALPUSER/.config/
 #mkdir /home/$ALPUSER/.profile
 cp -r configs/* /home/$ALPUSER/.config/
-#cp -r mimeapps.list /etc/xdg/
+cp -r mimeapps.list /etc/xdg/
 cat .profile >> /home/$ALPUSER/.profile
 cd /home/$ALPUSER/.config
 git clone https://github.com/LigoliPuschkin/nvim
