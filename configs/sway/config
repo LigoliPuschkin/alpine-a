@@ -32,7 +32,7 @@ input * {
 ### Output configuration
 #
 # Default w eallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
-output * bg /home/lhl/wallpaper/blacksand.jpg fill
+#output * bg /home/lhl/wallpaper/blacksand.jpg fill
 #
 # Example configuration:
 #
