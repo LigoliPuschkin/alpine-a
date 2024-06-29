@@ -12,7 +12,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term alacritty
-set $browser qutebrowser
+set $browser firefox
 set $files thunar
 
 # Your preferred application launcher
@@ -25,10 +25,16 @@ font pango:DejaVu font 11
 
 exec mako
 
-input * {
-		xkb_layout  "de, us" 
-		#xkb_options grp:win_space_toggle
+input*{
+	xkb_layout  "de, us" 
+	#xkb_options grp:win_space_toggle
 }
+if apk list installed pipewire &> /dev/null; then
+	exec pipewire
+	exec pipewire/alsa
+	exec wireplumber
+fi
+
 ### Output configuration
 #
 # Default w eallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
