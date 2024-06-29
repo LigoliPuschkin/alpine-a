@@ -107,10 +107,41 @@ rc-update add iwd
 #rc-service alsa start
 #rc-update add alsa
 
+
+echo "====================>  audio management [y/N]"
+read instrep
+if [[ $instrep == "y" ]] then
+	apk add pipewire wireplumber pipewire-alsa
+	
+	cp -a /usr/share/pipewire /etc
+	cp -a /usr/share/wireplumber /etc
+
+fi
+
 echo "====================>  chg doas.conf and XDG_RUNTIME"
 # no longer needed since we coppy .profile from githup
 #printf 	'if [ -z "$XDG_RUNTIME_DIR" ]; then \n	XDG_RUNTIME_DIR="/tmp/$(id -u)-runtime-dir" \n \n mkdir -pm 0700 "$XDG_RUNTIME_DIR" \n export XDG_RUNTIME_DIR \n fi\n' > /home/$ALPUSER/.profile
 echo "permit persist :wheel" >> /etc/doas.conf
+
+
+echo "setup flathub [y/N]"
+read instrep
+if [[ $instrep == "y" ]] then 
+	apk add flathub
+	flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+	
+	echo "install flthub packages: FreeCAD [y/N]"
+	read instrep 
+	if [[ $instrep == "y" ]] then
+		flatpak --user install freecad
+		echo "to run flatpak: flatpak run app-ID:"
+		echo "to list flatpaks: flatpak list"
+		flatpak list				#schows app id
+	#flatoak run app-ID
+ 	fi
+ 	
+fi
+
 echo "====================>  make user owner of his directory; and disale root"
 chown -R $ALPUSER /home/$ALPUSER
 #locks root user out cant use root any more?	
