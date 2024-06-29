@@ -25,15 +25,16 @@ font pango:DejaVu font 11
 
 exec mako
 
-input*{
+input * {
 	xkb_layout  "de, us" 
 	#xkb_options grp:win_space_toggle
 }
-if apk list installed pipewire &> /dev/null; then
-	exec pipewire
-	exec pipewire/alsa
-	exec wireplumber
-fi
+
+ifapk.list_installed("pipewire") then
+  io.popen("pipewire")
+  io.popen("pipewire/alsa")
+  io.popen("wireplumber")
+end
 
 ### Output configuration
 #
