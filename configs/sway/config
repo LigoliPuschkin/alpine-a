@@ -30,11 +30,11 @@ input * {
 	#xkb_options grp:win_space_toggle
 }
 
-ifapk.list_installed("pipewire") then
-  io.popen("pipewire")
-  io.popen("pipewire/alsa")
-  io.popen("wireplumber")
-end
+#ifapk.list_installed("pipewire") then
+#  io.popen("pipewire")
+#  io.popen("pipewire/alsa")
+#  io.popen("wireplumber")
+#end
 
 ### Output configuration
 #
