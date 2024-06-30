@@ -127,11 +127,11 @@ echo "permit persist :wheel" >> /etc/doas.conf
 echo "setup flathub [y/N]"
 #read instrep
 #if [[ $instrep == "y" ]]; then 
-	apk add flathub
+	apk add flatpak
 	flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 	
 	echo "install flthub packages: FreeCAD [y/N]"
-	read instrep 
+	#read instrep 
 	#if [[ $instrep == "y" ]]; then
 		#flatpak --user install freecad
 		#echo "to run flatpak: flatpak run app-ID:"
