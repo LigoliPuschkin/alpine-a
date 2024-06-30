@@ -2,11 +2,11 @@
 
 
 echo "====================> faster boot"
-#rc-update del networking boot
-#mkdir /etc/runlevels/async
-#rc-update add -s default async
-#printf "::once:/sbin/openrc async" >> /etc/inittab
-#rc-update add networking async
+rc-update del networking boot
+mkdir /etc/runlevels/async
+rc-update add -s default async
+printf "::once:/sbin/openrc async" >> /etc/inittab
+rc-update add networking async
 
 ALPUSER="lhl"
 ALPNAME="lhl"
