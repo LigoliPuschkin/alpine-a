@@ -76,7 +76,7 @@ apk add swaylock swaylockd swaybg swayidle
 
 echo "====================> Installing applications"
 # adds apps: Terminal; app launcher; file browser; internet browser; git; texteditor; screenshot tool
-apk add alacritty wofi thunar qutebrowser git neovim grim doas
+apk add alacritty wofi thunar flatpak git neovim grim doas
 
 echo "====================> Installing icons and fonts"
 apk add font-nerd-fonts-symbols
@@ -95,6 +95,7 @@ cp -r mimeapps.list /etc/xdg/
 cat .profile >> /home/$ALPUSER/.profile
 cd /home/$ALPUSER/.config
 git clone https://github.com/LigoliPuschkin/nvim
+flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 echo "====================> Include default wallpaper"
 cp -r wallpaper /home/$ALPUSER/
@@ -116,13 +117,13 @@ rc-update add iwd
 #rc-update add alsa
 
 
-echo "====================>  audio management [y/N]"
+#echo "====================>  audio management [y/N]"
 #read instrep
 #if [[ $instrep == "y" ]]; then
-	apk add pipewire wireplumber pipewire-alsa
+#	apk add pipewire wireplumber pipewire-alsa
 	
-	cp -a /usr/share/pipewire /etc
-	cp -a /usr/share/wireplumber /etc
+#	cp -a /usr/share/pipewire /etc
+#	cp -a /usr/share/wireplumber /etc
 
 #fi
 
@@ -132,13 +133,13 @@ echo "====================>  chg doas.conf and XDG_RUNTIME"
 echo "permit persist :wheel" >> /etc/doas.conf
 
 
-echo "setup flathub [y/N]"
+#echo "setup flathub [y/N]"
 #read instrep
 #if [[ $instrep == "y" ]]; then 
-	apk add flatpak
-	flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+#	apk add flatpak
+#	flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 	
-	echo "install flthub packages: FreeCAD [y/N]"
+#	echo "install flthub packages: FreeCAD [y/N]"
 	#read instrep 
 	#if [[ $instrep == "y" ]]; then
 		#flatpak --user install freecad
