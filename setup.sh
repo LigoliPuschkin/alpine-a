@@ -109,14 +109,14 @@ rc-update add iwd
 
 
 echo "====================>  audio management [y/N]"
-read instrep
-if [[ $instrep == "y" ]]; then
+#read instrep
+#if [[ $instrep == "y" ]]; then
 	apk add pipewire wireplumber pipewire-alsa
 	
 	cp -a /usr/share/pipewire /etc
 	cp -a /usr/share/wireplumber /etc
 
-fi
+#fi
 
 echo "====================>  chg doas.conf and XDG_RUNTIME"
 # no longer needed since we coppy .profile from githup
@@ -125,22 +125,22 @@ echo "permit persist :wheel" >> /etc/doas.conf
 
 
 echo "setup flathub [y/N]"
-read instrep
-if [[ $instrep == "y" ]]; then 
+#read instrep
+#if [[ $instrep == "y" ]]; then 
 	apk add flathub
 	flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 	
 	echo "install flthub packages: FreeCAD [y/N]"
 	read instrep 
-	if [[ $instrep == "y" ]]; then
-		flatpak --user install freecad
-		echo "to run flatpak: flatpak run app-ID:"
-		echo "to list flatpaks: flatpak list"
-		flatpak list				#schows app id
+	#if [[ $instrep == "y" ]]; then
+		#flatpak --user install freecad
+		#echo "to run flatpak: flatpak run app-ID:"
+		#echo "to list flatpaks: flatpak list"
+		#flatpak list				#schows app id
 	#flatoak run app-ID
- 	fi
+ 	#fi
  	
-fi
+#fi
 
 echo "====================>  make user owner of his directory; and disale root"
 chown -R $ALPUSER /home/$ALPUSER
