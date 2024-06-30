@@ -77,6 +77,8 @@ apk add swaylock swaylockd swaybg swayidle
 echo "====================> Installing applications"
 # adds apps: Terminal; app launcher; file browser; internet browser; git; texteditor; screenshot tool
 apk add alacritty wofi thunar flatpak git neovim grim doas
+# for compiling and stuff
+apk add build-base
 
 echo "====================> Installing icons and fonts"
 apk add font-nerd-fonts-symbols
