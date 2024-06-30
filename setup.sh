@@ -96,6 +96,7 @@ cat .profile >> /home/$ALPUSER/.profile
 cd /home/$ALPUSER/.config
 git clone https://github.com/LigoliPuschkin/nvim
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak repair
 
 echo "====================> Include default wallpaper"
 cp -r wallpaper /home/$ALPUSER/
