@@ -1,13 +1,5 @@
 #!/bin/bash
 
-
-echo "====================> faster boot"
-#rc-update del networking boot
-#mkdir /etc/runlevels/async
-#rc-update add -s default async
-#printf "::once:/sbin/openrc async" >> /etc/inittab
-#rc-update add networking async
-
 ALPUSER="lhl"
 ALPNAME="lhl"
 
@@ -62,9 +54,9 @@ apk add dbus dbus-x11
 apk add seatd
 
 echo "====================> Installing audio driver"
-#apk add pipewire wireplumber pipewire-alsa
-#cp -a /usr/share/pipewire /etc
-#cp -a /usr/share/wireplumber /etc
+apk add pipewire wireplumber pipewire-alsa
+cp -a /usr/share/pipewire /etc
+cp -a /usr/share/wireplumber /etc
 
 
 echo "====================> Installing packages to make sway a viable desktop"
@@ -93,19 +85,11 @@ apk del top
 
 echo "====================> Update main config files"
 mkdir /home/$ALPUSER/.config/
-#mkdir /home/$ALPUSER/.profile
 cp -r configs/* /home/$ALPUSER/.config/
 cp -r mimeapps.list /etc/xdg/
 cat .profile >> /home/$ALPUSER/.profile
 cd /home/$ALPUSER/.config
 git clone https://github.com/LigoliPuschkin/nvim
-#setsup britness contross so script can do work
-#touch /etc/udev/rules.d/backlight.rules
-#RUN+="/bin/chgrp video /sys/class/backlight/intel_backlight/brightness"
-#RUN+="/bin/chmod g+w /sys/class/backlight/intel_backlight/brightness"
-
-#flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-#flatpak repair
 
 echo "====================> Include default wallpaper"
 cp -r wallpaper /home/$ALPUSER/
@@ -122,49 +106,8 @@ rc-update add dbus
 rc-service iwd start
 rc-update add iwd
 
-#export $(dbus-launch)
-#/usr/libexec/pipewire-launcher
-#rc-service alsa start
-#rc-update add alsa
-
-
-#echo "====================>  audio management [y/N]"
-#read instrep
-#if [[ $instrep == "y" ]]; then
-#	apk add pipewire wireplumber pipewire-alsa
-	
-#	cp -a /usr/share/pipewire /etc
-#	cp -a /usr/share/wireplumber /etc
-
-#fi
-
-echo "====================>  chg doas.conf and XDG_RUNTIME"
-# no longer needed since we coppy .profile from githup
-#printf 	'if [ -z "$XDG_RUNTIME_DIR" ]; then \n	XDG_RUNTIME_DIR="/tmp/$(id -u)-runtime-dir" \n \n mkdir -pm 0700 "$XDG_RUNTIME_DIR" \n export XDG_RUNTIME_DIR \n fi\n' > /home/$ALPUSER/.profile
-echo "permit persist :wheel" >> /etc/doas.conf
-
-
-#echo "setup flathub [y/N]"
-#read instrep
-#if [[ $instrep == "y" ]]; then 
-#	apk add flatpak
-#	flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-	
-#	echo "install flthub packages: FreeCAD [y/N]"
-	#read instrep 
-	#if [[ $instrep == "y" ]]; then
-		#flatpak --user install freecad
-		#echo "to run flatpak: flatpak run app-ID:"
-		#echo "to list flatpaks: flatpak list"
-		#flatpak list				#schows app id
-	#flatoak run app-ID
- 	#fi
- 	
-#fi
-
-echo "====================>  make user owner of his directory; and disale root"
+echo "====================>  make user owner of his directory; and disable root"
 chown -R $ALPUSER /home/$ALPUSER
 #locks root user out cant use root any more?	
 #passwd -l root	
 echo "====================>  Setup complete"
-echo "You can now reboot your machine."
