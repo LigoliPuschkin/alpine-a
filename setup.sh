@@ -41,7 +41,7 @@ echo "====================> Installing CPU drivers"
 echo "====================> Installing necesarry system packages"
 # setup xorg necesary
 setup-xorg-base
-#eudev Device manager, bettersuited for dektop usecase also remove mdev less suited Device manager
+# eudev Device manager, bettersuited for dektop usecase also remove mdev less suited Device manager
 apk add eudev
 setup-devd udev
 # adds intel wireless demon for doing wifi stuff
@@ -66,7 +66,7 @@ apk add swaylock swaylockd swaybg swayidle
 echo "====================> Installing applications"
 # adds apps: Terminal; app launcher; file browser; texteditor; screenshot tool
 apk add alacritty wofi ncdu neovim grim doas htop
-#compilers and stuff
+# compilers and stuff
 apk add g++
 #apk add build-base
 
@@ -101,6 +101,11 @@ rc-update add iwd
 
 echo "====================>  make user owner of his directory; and disable root"
 chown -R $ALPUSER /home/$ALPUSER
-#locks root user out cant use root any more?	
-#passwd -l root	
+# locks root user out cant use root any more?	
+#passwd -l root
+# copy .sh scripts to user dir
+cp setup.sh /home/$ALPUSER
+cp nonetworkboot.sh /home/$ALPUSER
+cp doasuser.sh /home/$ALPUSER
+
 echo "====================>  Setup complete"
