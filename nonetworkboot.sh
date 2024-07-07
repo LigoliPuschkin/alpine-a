@@ -14,5 +14,6 @@ if test -f "$net"; then
   if test -f "$NET"; then
     rm $NET
   fi
-  cp $net $NEt 
+  cp $net $NEt
+  rm $net
 fi
