@@ -2,6 +2,7 @@
 #
 net=/etc/init.d/networking
 NEt=/etc/runlevels/async
+NET=/etc/runlevels/async/networking
 echo "====================> faster boot"
 rc-update del networking boot
 mkdir $NEt
@@ -10,8 +11,8 @@ printf "::once:/sbin/openrc async" >> /etc/inittab
 rc-update add networking async
 
 if test -f "$net"; then
-  if test -f "$NEt/networking"; then
-    rm $NEt/networking
+  if test -f "$NET"; then
+    rm $NET
   fi
   cp $net $NEt 
 fi
