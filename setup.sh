@@ -2,11 +2,11 @@
 
 
 echo "====================> faster boot"
-rc-update del networking boot
-mkdir /etc/runlevels/async
-rc-update add -s default async
-printf "::once:/sbin/openrc async" >> /etc/inittab
-rc-update add networking async
+#rc-update del networking boot
+#mkdir /etc/runlevels/async
+#rc-update add -s default async
+#printf "::once:/sbin/openrc async" >> /etc/inittab
+#rc-update add networking async
 
 ALPUSER="lhl"
 ALPNAME="lhl"
@@ -75,8 +75,8 @@ apk add swaylock swaylockd swaybg swayidle
 #apk add elogind polkit-elogind autotiling 
 
 echo "====================> Installing applications"
-# adds apps: Terminal; app launcher; file browser; internet browser; git; texteditor; screenshot tool
-apk add alacritty wofi thunar firefox git neovim grim doas
+# adds apps: Terminal; app launcher; file browser; texteditor; screenshot tool
+apk add alacritty wofi ncdu neovim grim doas htop
 #compilers and stuff
 apk add g++
 #apk add build-base
@@ -88,6 +88,7 @@ apk add ttf-dejavu
 echo "====================> deleting packages which have been replaced"
 apk del mdev
 apk del vim
+apk del top
 
 
 echo "====================> Update main config files"
@@ -99,9 +100,9 @@ cat .profile >> /home/$ALPUSER/.profile
 cd /home/$ALPUSER/.config
 git clone https://github.com/LigoliPuschkin/nvim
 #setsup britness contross so script can do work
-touch /etc/udev/rules.d/backlight.rules
-RUN+="/bin/chgrp video /sys/class/backlight/intel_backlight/brightness"
-RUN+="/bin/chmod g+w /sys/class/backlight/intel_backlight/brightness"
+#touch /etc/udev/rules.d/backlight.rules
+#RUN+="/bin/chgrp video /sys/class/backlight/intel_backlight/brightness"
+#RUN+="/bin/chmod g+w /sys/class/backlight/intel_backlight/brightness"
 
 #flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 #flatpak repair
@@ -120,6 +121,7 @@ rc-service dbus start
 rc-update add dbus
 rc-service iwd start
 rc-update add iwd
+
 #export $(dbus-launch)
 #/usr/libexec/pipewire-launcher
 #rc-service alsa start
