@@ -81,7 +81,7 @@ apk del top
 
 echo "====================> Update main config files"
 mkdir /home/$ALPUSER/.config/
-cp -r configs/* /home/$ALPUSER/.config/
+cp -r config/* /home/$ALPUSER/.config/
 cp -r mimeapps.list /etc/xdg/
 cat .profile >> /home/$ALPUSER/.profile
 cd /home/$ALPUSER/.config
