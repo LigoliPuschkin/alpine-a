@@ -20,8 +20,6 @@ echo "http://dl-cdn.alpinelinux.org/alpine/v3.20/community" >> /etc/apk/reposito
 apk update
 apk upgrade
 
-
-
 echo "====================> Installing helpful packages"
 #apk add dbus xdg-desktop-portal xdg-desktop-portal-wlr linux-firmware wireless-tools iwd util-linux
 #apk add pciutils usbutils coreutils binutils findutils grep iproute2 
@@ -58,7 +56,6 @@ apk add pipewire wireplumber pipewire-alsa
 cp -a /usr/share/pipewire /etc
 cp -a /usr/share/wireplumber /etc
 
-
 echo "====================> Installing packages to make sway a viable desktop"
 apk add nwg-launchers-bar
 apk add waybar
@@ -82,7 +79,6 @@ apk del mdev
 apk del vim
 apk del top
 
-
 echo "====================> Update main config files"
 mkdir /home/$ALPUSER/.config/
 cp -r configs/* /home/$ALPUSER/.config/
@@ -90,9 +86,6 @@ cp -r mimeapps.list /etc/xdg/
 cat .profile >> /home/$ALPUSER/.profile
 cd /home/$ALPUSER/.config
 git clone https://github.com/LigoliPuschkin/nvim
-
-echo "====================> Include default wallpaper"
-cp -r wallpaper /home/$ALPUSER/
 
 echo "====================> Configuring services to launch at boot"
 # rc-update: 	add or remove OpenRC services to and from runlecels
