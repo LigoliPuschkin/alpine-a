@@ -1,0 +1,33 @@
+# indicator
+# no-unlock-indicator
+# daemonize
+indicator-caps-lock
+ignore-empty-password
+# datestr=%A
+image=$HOME/.config/swaylock/swaylock.jpg
+scaling=fill
+font=DejaVu Sans Mono
+font-size=20
+
+#effect-blur=20x2
+#effect-scale=0.3
+#clock
+#timestr=%R
+#datestr=%a, %e of %B
+
+# Ring
+indicator-radius=300
+#indicator-thickness=20
+
+# line-uses-ring
+line-color=#3b4252
+text-color=#d8dee9
+inside-color=#2e344098
+inside-ver-color=#5e81ac
+line-ver-color=#5e81ac
+ring-ver-color=#5e81ac98
+ring-color=#4c566a
+key-hl-color=#5e81ac
+separator-color=#4c566a
+layout-text-color=#eceff4
+line-wrong-color=#d08770
